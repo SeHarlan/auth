@@ -25,9 +25,9 @@
 * steps
   [x] hash password with virtual (in User model)
   [x] create auth token with jwt (in User model)
-  [] signup route (in auth routes)
-  [] authorize method (in User model)
-  [] login route (in auth routes)
+  [x] signup route (in auth routes)
+  [x] authorize method (in User model)
+  [x] login route (in auth routes)
   [] findByToken method (in User model)
   [] ensureAuth middleware (cookie-parser) (in ensure-auth middleware)
   [] verify route (in auth routes)

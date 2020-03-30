@@ -32,4 +32,33 @@ describe('app routes', () => {
       });
   });
 
+  it('logs in a user', async() => {
+    await User.create({ username: 'test3', password: 'secure' });
+    
+    return request(app)
+      .post('/api/v1/auth/login')
+      .send({ username: 'test3', password: 'secure' })
+      .then(res => {
+        expect(res.body).toEqual({
+          _id: expect.any(String),
+          username: 'test3',
+          __v: 0
+        });
+      });
+  });
+
+  it('fails to logs in a user', async() => {
+    await User.create({ username: 'test3', password: 'secure' });
+    
+    return request(app)
+      .post('/api/v1/auth/login')
+      .send({ username: 'test3', password: 'baddddd' })
+      .then(res => {
+        expect(res.body).toEqual({
+          message: 'Invalid username or password',
+          status: 403
+        });
+      });
+  });
+
 });
